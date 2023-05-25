@@ -1,3 +1,4 @@
+import os
 import re
 import allure
 import pytest
@@ -26,10 +27,47 @@ class TestStartMigration:
             lang = start_page.page.get_by_role('button', name='简体中文')
             expect(lang).to_be_visible()
 
-    @allure.title('查看帮助文档')
+    @allure.title('下载 Jira 数据迁移清单')
+    def test_download_documents(self):
+        start_page = self.start_page
+        with step('点击右上角 ? 图标'):
+            start_page.page.locator("header").get_by_role("img").nth(2).click()
+        with step('点击下载 Jira 数据迁移清单'):
+            mappingfile = start_page.download_file()
+            mappingfile.save_as('Jira 数据迁移清单.xlsx')
+        with step('检查数据迁移清单是否下载成功'):
+            assert os.path.exists('Jira 数据迁移清单.xlsx') is True
+
+    @allure.title('查看帮助手册')
+    def test_helpdoc_page(self):
+        start_page = self.start_page
+        with step('点击右上角 ? 图标'):
+            start_page.page.locator("header").get_by_role("img").nth(2).click()
+        with step('点击帮助手册'):
+            helpdoc = start_page.help_doc()
+            helpdoc.wait_for_load_state()
+        with step('检查帮助手册链接是否正确'):
+            expect(helpdoc).to_have_url('https://guide.ones.pro/wiki/#/team/LBrdb4wE/space/6XDAYB1a/page/EyHo79My')
+        with step('关闭使用指南页面'):
+            helpdoc.close()
+
+    @allure.title('点击联系我们')
+    def test_contact_us(self):
+        start_page = self.start_page
+        with step('点击右上角 ? 图标'):
+            start_page.page.locator("header").get_by_role("img").nth(2).click()
+        with step('点击联系我们'):
+            start_page.contact_us()
+        with step('检查是否弹出联系我们弹窗'):
+            dialog_title = start_page.page.get_by_role("dialog", name="联系我们").get_by_text("联系我们", exact=True)
+            expect(dialog_title).to_be_visible()
+        with step("关闭弹窗"):
+            start_page.click_by_button("我知道了")
+
+    @allure.title('查看使用指南')
     def test_guide_page(self):
         start_page = self.start_page
-        with step('点击查看使用指南'):
+        with step('点击使用指南'):
             guide = start_page.guide_page()
             guide.wait_for_load_state()
         with step('检查使用指南链接是否正确'):
@@ -42,7 +80,11 @@ class TestStartMigration:
         start_page = self.start_page
         with step('点击开始迁移'):
             start_page.start_migration()
-        with step('点击同意条款'):
+        with step('点击条款弹窗-确定按钮'):
+            start_page.dont_agree_terms()
+        with step('检查是否停留在首页'):
+            expect(start_page.page).to_have_url(re.compile(r".*/page/home"))
+        with step('条款弹窗-勾选同意条款'):
             start_page.agree_terms()
         with step('检查是否跳转到「登录 ONES」页面'):
             expect(start_page.page).to_have_url(re.compile(r".*/analyze/environment"))

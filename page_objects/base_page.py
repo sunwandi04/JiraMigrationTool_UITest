@@ -47,7 +47,3 @@ class BasePage:
     @allure.step('expand or fold text - {text} ')
     def expand_fold(self, text: str):
         self.page.get_by_role("cell", name=text).get_by_role("img").click()
-
-    @allure.step('locator - {locator}')
-    def locator(self, locator: str):
-        self.page.locator(locator)
