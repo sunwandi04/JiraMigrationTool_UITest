@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu May 25 14:07:32 CST 2023","Thu May 25 14:07:32 CST 2023","109","tests","test_start_migration","TestStartMigration","","","开始评估",""
+"passed","Thu May 25 14:07:22 CST 2023","Thu May 25 14:07:28 CST 2023","6540","tests","test_start_migration","TestStartMigration","","","切换语言",""
+"passed","Thu May 25 14:07:31 CST 2023","Thu May 25 14:07:32 CST 2023","1008","tests","test_start_migration","TestStartMigration","","","开始迁移",""
+"passed","Thu May 25 14:07:28 CST 2023","Thu May 25 14:07:31 CST 2023","2295","tests","test_start_migration","TestStartMigration","","","查看帮助文档",""
