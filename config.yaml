@@ -1,0 +1,7 @@
+migration_tool_url: http://120.79.248.9
+ones_env_url:  http://47.106.192.11
+ones_env_user: marsdev@ones.ai
+ones_env_common_user: jira@ones.ai
+ones_env_common_user2: jira2@ones.ai
+ones_env_pwd: Test1234
+ones_base_url: /project/api/project

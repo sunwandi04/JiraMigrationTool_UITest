@@ -4,7 +4,7 @@ import allure
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
-from page_objects.front.front_page import FrontPage
+from page_objects.migrationtool.front_page import FrontPage
 
 
 @pytest.fixture(scope='class')
@@ -19,6 +19,7 @@ def start_page(request, page):
 class TestStartMigration:
 
     @allure.title('切换语言')
+    @pytest.mark.run(order=1)
     def test_change_language(self):
         start_page = self.start_page
         with step('切换为英文、日文'):
@@ -28,6 +29,7 @@ class TestStartMigration:
             expect(lang).to_be_visible()
 
     @allure.title('下载 Jira 数据迁移清单')
+    @pytest.mark.run(order=2)
     def test_download_documents(self):
         start_page = self.start_page
         with step('点击右上角 ? 图标'):
@@ -39,6 +41,7 @@ class TestStartMigration:
             assert os.path.exists('Jira 数据迁移清单.xlsx') is True
 
     @allure.title('查看帮助手册')
+    @pytest.mark.run(order=3)
     def test_helpdoc_page(self):
         start_page = self.start_page
         with step('点击右上角 ? 图标'):
@@ -52,6 +55,7 @@ class TestStartMigration:
             helpdoc.close()
 
     @allure.title('点击联系我们')
+    @pytest.mark.run(order=4)
     def test_contact_us(self):
         start_page = self.start_page
         with step('点击右上角 ? 图标'):
@@ -65,6 +69,7 @@ class TestStartMigration:
             start_page.click_by_button("我知道了")
 
     @allure.title('查看使用指南')
+    @pytest.mark.run(order=5)
     def test_guide_page(self):
         start_page = self.start_page
         with step('点击使用指南'):
@@ -76,6 +81,7 @@ class TestStartMigration:
             guide.close()
 
     @allure.title('开始迁移')
+    @pytest.mark.run(order=6)
     def test_start_migrate(self):
         start_page = self.start_page
         with step('点击开始迁移'):
@@ -90,6 +96,7 @@ class TestStartMigration:
             expect(start_page.page).to_have_url(re.compile(r".*/analyze/environment"))
 
     @allure.title('开始评估')
+    @pytest.mark.run(order=7)
     def test_start_assess(self):
         start_page = self.start_page
         with step('回到迁移工具首页'):

@@ -1,13 +1,22 @@
-import os
-from urllib import request
+
 import allure
-import dotenv
-import pytest
 from playwright.sync_api import sync_playwright
+import os
+import pytest
+import yaml
+
+
+# 加载读取配置文件config.yaml
+@pytest.fixture(scope="session")
+def env(request):
+    config_path = os.path.join(request.config.rootdir, "config.yaml")
+    with open(config_path) as f:
+        env_config = yaml.load(f.read(), Loader=yaml.SafeLoader)
+    return env_config
 
 
 @pytest.fixture(scope='session')
-def page():
+def page(env):
     with sync_playwright() as play:
         if os.getenv('DOCKER_RUN') or os.getenv('GITHUB_RUN'):
             browser = play.chromium.launch(headless=True, args=['--no-sandbox'])
@@ -15,8 +24,7 @@ def page():
             browser = play.chromium.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
-        #page.goto(dotenv.dotenv_values(".env")['migration_tool_url'])
-        page.goto("http://120.79.248.9")
+        page.goto(env['migration_tool_url'])
         global PAGE
         PAGE = page
         yield page
