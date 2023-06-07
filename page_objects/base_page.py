@@ -18,6 +18,22 @@ class BasePage:
     def click_by_button(self, button: str):
         self.page.get_by_role("button", name=button).click()
 
+    @allure.step('Click button - {button}')
+    def click_by_dialog_button(self, button: str):
+        self.page.get_by_role("dialog").get_by_role("button", name=button).click()
+
+    @allure.step('Click link - {link}')
+    def click_by_link(self, link: str):
+        self.page.get_by_role("link", name=link).click()
+
+    @allure.step('Click label - {label}')
+    def click_by_label(self, label: str):
+        self.page.get_by_label(label).click()
+
+    @allure.step('Click title - {title}')
+    def click_by_title(self, title: str):
+        self.page.get_by_title(title).click()
+
     @allure.step('Click dropbox - {dropbox}')
     def click_dropbox(self, name: str, dropbox: str):
         self.page.get_by_role("row", name=name).get_by_text(dropbox).click()

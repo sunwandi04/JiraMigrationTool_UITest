@@ -4,7 +4,7 @@ import allure
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
-from page_objects.migrationtool.front_page import FrontPage
+from page_objects.Migrationtool.front_page import FrontPage
 
 
 @pytest.fixture(scope='class')

@@ -73,7 +73,6 @@ def prepare_ones_data():
         elif invitation_resp[i]["email"] == env["ones_env_common_user2"]:
             invitation_code2 = invitation_resp[i]["code"]
 
-
     # 成员使用邀请码加入团队
     join_headers = login_headers
     join_url = env["ones_env_url"] + env["ones_base_url"] + "/auth/invite_join_team"
@@ -110,7 +109,6 @@ def prepare_ones_data():
                                                          "user_domain_type": "single_user",
                                                          "user_domain_param": common_user_uuid}})
     team_admin_response = requests.request("POST", team_admin_url, headers=team_admin_headers, data=team_admin_payload)
-    print(team_admin_response.text)
 
     # 创建两个测试团队
     create_team_headers = invite_headers
@@ -125,6 +123,7 @@ def prepare_ones_data():
     })
     requests.request("POST", create_team_url, headers=create_team_headers, data=create_team_payload1)
     requests.request("POST", create_team_url, headers=create_team_headers, data=create_team_payload2)
+    print("测试数据准备完成")
 
 
 if __name__ == '__main__':
