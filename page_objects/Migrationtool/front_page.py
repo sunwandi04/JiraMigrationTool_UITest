@@ -41,11 +41,11 @@ class FrontPage(BasePage):
         self.click_by_button('确定')
 
     def change_language(self):
-        self.click_by_button('简体中文')
+        self.click_by_text('简体中文')
         self.click_by_text('English')
         self.page.wait_for_load_state()
-        self.click_by_button('English')
+        self.click_by_text('English')
         self.click_by_text('日本語')
         self.page.wait_for_load_state()
-        self.click_by_button('日本語')
+        self.click_by_text('日本語')
         self.click_by_text('简体中文')

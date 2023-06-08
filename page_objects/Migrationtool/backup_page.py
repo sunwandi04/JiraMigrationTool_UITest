@@ -22,3 +22,11 @@ class BackupPage(LoginPage):
         self.click_by_label("选择 Jira 备份包")
         self.click_by_title("jira_ui_auto_test.zip")
         self.click_by_button("开始解析")
+
+    def analyze_wrong_format(self):
+        self.click_by_label("选择 Jira 备份包")
+        self.page.locator(".rc-virtual-list-scrollbar").click()
+        self.page.locator(".rc-virtual-list-scrollbar-thumb").click()
+        self.page.locator(".rc-virtual-list-scrollbar-thumb").click()
+        self.click_by_title("错误格式.zip")
+        self.click_by_button("开始解析")

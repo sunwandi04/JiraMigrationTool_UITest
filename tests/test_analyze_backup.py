@@ -11,9 +11,7 @@ from page_objects.Migrationtool.backup_page import BackupPage
 def backup_page(request, page, env):
     backup_page = BackupPage(page)
     request.cls.backup_page = backup_page
-    backup_page.start_migration()
-    backup_page.agree_terms()
-    backup_page.login_ones(env["ones_env_url"], env["ones_env_user"], env["ones_env_pwd"])
+    backup_page.login_again()
     yield backup_page
 
 
@@ -74,7 +72,7 @@ class TestAnalyzeBackup:
 
     @allure.title('返回至未完成的迁移配置，点击重新配置，检查是否进入「选择 Jira 备份包」页面')
     @pytest.mark.run(order=6)
-    def test_reconfigure(self,env):
+    def test_reconfigure(self, env):
         backup_page = self.backup_page
         with step('退出登录'):
             backup_page.logout()
@@ -86,3 +84,14 @@ class TestAnalyzeBackup:
         with step('检查否跳转到「选择 Jira 备份包」页面'):
             expect(backup_page.page).to_have_url(re.compile(r".*/analyze/pack"))
             expect(backup_page.page.get_by_text("jira_ui_auto_test.zip")).to_be_visible()
+
+    @allure.title('检查选择错误格式数据包，解析报错')
+    @pytest.mark.run(order=5)
+    def test_analyze_wrong_format(self):
+        backup_page = self.backup_page
+        with step('选择备份包，点击开始解析'):
+            backup_page.analyze_wrong_format()
+        with step('检查是否跳转到「解析Jira 备份包」页面'):
+            expect(backup_page.page).to_have_url(re.compile(r".*/analyze/progress"))
+        with step('是否提示备份包数据格式错误'):
+            expect(backup_page.page.get_by_text("解析失败，Jira 备份包数据格式错误，请重新上传")).to_be_visible()

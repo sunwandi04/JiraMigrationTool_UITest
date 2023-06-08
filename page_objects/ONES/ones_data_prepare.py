@@ -126,5 +126,12 @@ def prepare_ones_data():
     print("测试数据准备完成")
 
 
-if __name__ == '__main__':
-    prepare_ones_data()
+def read_config():
+    # 获取环境变量
+    curPath = os.path.abspath(os.path.dirname(__file__))
+    rootPath = curPath[:curPath.find("JiraMigrationTool_UITest") + len("JiraMigrationTool_UITest")]
+    config_path = os.path.abspath(rootPath + '/config.yaml')
+
+    with open(config_path) as f:
+        env = yaml.load(f.read(), Loader=yaml.SafeLoader)
+        return env

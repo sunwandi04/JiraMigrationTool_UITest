@@ -25,7 +25,7 @@ class TestStartMigration:
         with step('切换为英文、日文'):
             start_page.change_language()
         with step('检查是否切换成功'):
-            lang = start_page.page.get_by_role('button', name='简体中文')
+            lang = start_page.page.get_by_text("简体中文")
             expect(lang).to_be_visible()
 
     @allure.title('下载 Jira 数据迁移清单')

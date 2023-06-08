@@ -1,4 +1,5 @@
 from page_objects.Migrationtool.front_page import FrontPage
+from page_objects.ONES import ones_data_prepare
 
 
 class LoginPage(FrontPage):
@@ -9,13 +10,14 @@ class LoginPage(FrontPage):
         self.input("ONES 密码", pwd)
         self.click_by_button("下一步")
 
-    def login_again(self, env):
+    def login_again(self):
         self.click_by_button("开始迁移")
         self.check(locator='')
         self.click_by_button('确定')
-        self.type("例：http://ones.cn 或 https://ones.cn", url)
-        self.input("ONES 邮箱", username)
-        self.input("ONES 密码", pwd)
+        login_env = ones_data_prepare.read_config()
+        self.type("例：http://ones.cn 或 https://ones.cn", login_env["ones_env_url"])
+        self.input("ONES 邮箱", login_env["ones_env_user"])
+        self.input("ONES 密码", login_env["ones_env_pwd"])
         self.click_by_button("下一步")
 
     def login_with_no_input(self):
