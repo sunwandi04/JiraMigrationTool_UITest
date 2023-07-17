@@ -1,6 +1,5 @@
 import time
-
-from JiraMigrationTool_UITest.page_objects.Migrationtool.login_page import LoginPage
+from page_objects.Migrationtool.login_page import LoginPage
 
 
 class BackupPage(LoginPage):
@@ -20,8 +19,8 @@ class BackupPage(LoginPage):
     def not_choose_backup(self):
         self.click_by_button("开始解析")
 
-    def start_analyze(self):
-        self.click_by_title("jira_ui_auto_test.zip")
+    def start_analyze(self,title,text):
+        self.select_option(title,text)
         self.click_by_button("开始解析")
 
     def analyze_wrong_format(self):

@@ -1,5 +1,3 @@
-import time
-
 import allure
 from playwright.sync_api import sync_playwright
 import os
@@ -48,5 +46,3 @@ def pytest_runtest_makereport():
             if PAGE:
                 allure.attach(PAGE.screenshot(), name='screenshot', attachment_type=allure.attachment_type.PNG)
                 allure.attach(PAGE.content(), name='html_source', attachment_type=allure.attachment_type.HTML)
-                PAGE.reload()
-                time.sleep(0.5)
