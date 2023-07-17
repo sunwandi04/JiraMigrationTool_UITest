@@ -19,8 +19,8 @@ class BackupPage(LoginPage):
     def not_choose_backup(self):
         self.click_by_button("开始解析")
 
-    def start_analyze(self,title,text):
-        self.select_option(title,text)
+    def start_analyze(self, title, text):
+        self.select_option(title, text)
         self.click_by_button("开始解析")
 
     def analyze_wrong_format(self):
