@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import re
-
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
 from page_objects.Migrationtool.evaluate_page import EvaluatePage
+
 
 @pytest.fixture(scope='class')
 def access_page(request, page):
@@ -12,6 +12,7 @@ def access_page(request, page):
     request.cls.access_page = access_page
     access_page.start_assess()
     yield access_page
+
 
 @pytest.mark.usefixtures('access_page')
 class TestStartAccess:

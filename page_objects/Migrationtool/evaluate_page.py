@@ -1,5 +1,5 @@
 from page_objects.Migrationtool.front_page import FrontPage
-import re
+
 
 class EvaluatePage(FrontPage):
 
@@ -16,4 +16,3 @@ class EvaluatePage(FrontPage):
 
     def cancel_assess(self):
         self.click_by_button("取消评估")
-

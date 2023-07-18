@@ -1,5 +1,6 @@
 from page_objects.Migrationtool.evaluate_page import EvaluatePage
 
+
 class ResultsPage(EvaluatePage):
 
     def finish_access(self):
@@ -15,4 +16,3 @@ class ResultsPage(EvaluatePage):
             self.click_by_button("下载评估报告")
         download_info = download_info.value
         return download_info
-

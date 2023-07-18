@@ -32,23 +32,20 @@ class TestStartMigration:
     @pytest.mark.run(order=2)
     def test_download_documents(self):
         start_page = self.start_page
-        with step('点击右上角 ? 图标'):
-            start_page.page.locator("header").get_by_role("img").nth(2).click()
         with step('点击下载 Jira 数据迁移清单'):
             mappingfile = start_page.download_file()
             mappingfile.save_as('Jira 数据迁移清单.xlsx')
         with step('检查数据迁移清单是否下载成功'):
             assert os.path.exists('Jira 数据迁移清单.xlsx') is True
+        with step('删除下载的文件'):
+            os.remove('Jira 数据迁移清单.xlsx')
 
     @allure.title('查看帮助手册')
     @pytest.mark.run(order=3)
-    def test_helpdoc_page(self):
+    def test_helpdoc(self):
         start_page = self.start_page
-        with step('点击右上角 ? 图标'):
-            start_page.page.locator("header").get_by_role("img").nth(2).click()
         with step('点击帮助手册'):
             helpdoc = start_page.help_doc()
-            helpdoc.wait_for_load_state()
         with step('检查帮助手册链接是否正确'):
             expect(helpdoc).to_have_url('https://guide.ones.pro/wiki/#/team/LBrdb4wE/space/6XDAYB1a/page/EyHo79My')
         with step('关闭使用指南页面'):
@@ -58,8 +55,6 @@ class TestStartMigration:
     @pytest.mark.run(order=4)
     def test_contact_us(self):
         start_page = self.start_page
-        with step('点击右上角 ? 图标'):
-            start_page.page.locator("header").get_by_role("img").nth(2).click()
         with step('点击联系我们'):
             start_page.contact_us()
         with step('检查是否弹出联系我们弹窗'):
@@ -70,11 +65,10 @@ class TestStartMigration:
 
     @allure.title('查看使用指南')
     @pytest.mark.run(order=5)
-    def test_guide_page(self):
+    def test_guide_link(self):
         start_page = self.start_page
-        with step('点击使用指南'):
-            guide = start_page.guide_page()
-            guide.wait_for_load_state()
+        with step('点击 查看使用指南'):
+            guide = start_page.guide_ones()
         with step('检查使用指南链接是否正确'):
             expect(guide).to_have_url('https://guide.ones.pro/wiki/#/team/LBrdb4wE/space/6XDAYB1a/page/EyHo79My')
         with step('关闭使用指南页面'):

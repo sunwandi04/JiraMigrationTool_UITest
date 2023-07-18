@@ -1,6 +1,7 @@
 from page_objects.Migrationtool.backup_page import BackupPage
 import re
 
+
 class IssueTypePage(BackupPage):
     def search_input(self, search_key):
         self.type("搜索 Jira 问题类型名称、问题类型 ID", search_key)
@@ -24,7 +25,3 @@ class IssueTypePage(BackupPage):
         self.click_by_button("下一步")
         self.choose_ones_org()
         self.choose_jira_proj()
-
-
-
-
