@@ -5,7 +5,7 @@ import allure
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
-from page_objects.Migrationtool.login_page import LoginPage
+from JiraMigrationTool_UITest.page_objects.Migrationtool.login_page import LoginPage
 
 
 @pytest.fixture(scope='class')

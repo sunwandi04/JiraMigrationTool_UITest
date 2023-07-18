@@ -1,5 +1,5 @@
 import re
-from page_objects.base_page import BasePage
+from JiraMigrationTool_UITest.page_objects.base_page import BasePage
 
 
 class FrontPage(BasePage):

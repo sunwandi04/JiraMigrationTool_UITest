@@ -1,5 +1,5 @@
-from page_objects.Migrationtool.front_page import FrontPage
-from page_objects.ONES import ones_data_prepare
+from JiraMigrationTool_UITest.page_objects.Migrationtool.front_page import FrontPage
+from JiraMigrationTool_UITest.page_objects.ONES import ones_data_prepare
 
 
 class LoginPage(FrontPage):

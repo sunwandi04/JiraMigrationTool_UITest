@@ -1,6 +1,6 @@
 import time
 
-from page_objects.Migrationtool.login_page import LoginPage
+from JiraMigrationTool_UITest.page_objects.Migrationtool.login_page import LoginPage
 
 
 class BackupPage(LoginPage):
