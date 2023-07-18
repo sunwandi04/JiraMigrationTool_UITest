@@ -1,4 +1,4 @@
-from JiraMigrationTool_UITest.page_objects.Migrationtool.front_page import FrontPage
+from page_objects.Migrationtool.front_page import FrontPage
 import re
 
 class EvaluatePage(FrontPage):
