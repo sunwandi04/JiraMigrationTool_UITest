@@ -1,5 +1,3 @@
-import time
-
 from page_objects.Migrationtool.login_page import LoginPage
 
 

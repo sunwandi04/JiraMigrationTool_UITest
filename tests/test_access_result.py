@@ -1,7 +1,6 @@
 import os
 import re
 import datetime
-
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
@@ -31,6 +30,7 @@ class TestAccessResult:
             mappingfile.save_as('0712集成测试.zip-迁移评估报告-'+formatted_date+'.xlsx')
         with step('检查下载评估报告是否下载成功'):
             assert os.path.exists('0712集成测试.zip-迁移评估报告-'+formatted_date+'.xlsx') is True
+            os.remove('0712集成测试.zip-迁移评估报告-'+formatted_date+'.xlsx')
 
     def test_finish_access(self):
         result_page = self.result_page

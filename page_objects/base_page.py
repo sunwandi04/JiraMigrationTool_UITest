@@ -38,6 +38,10 @@ class BasePage:
     def click_by_title(self, title: str):
         self.page.get_by_title(title).click()
 
+    @allure.step('Click tooltip - {tooltip}')
+    def click_by_tooltip(self, tooltip: str, text: str):
+        self.page.get_by_role("tooltip", name=tooltip).get_by_text(text).click()
+
     @allure.step('Click dropbox - {dropbox}')
     def click_dropbox(self, name: str, dropbox: str):
         self.page.get_by_role("row", name=name).get_by_text(dropbox).click()

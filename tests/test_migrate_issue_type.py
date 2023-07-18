@@ -6,9 +6,8 @@ from playwright.sync_api import expect
 from page_objects.Migrationtool.issue_type_page import IssueTypePage
 
 
-
 @pytest.fixture(scope='class')
-def issue_type_page(request,page,env):
+def issue_type_page(request, page, env):
     issue_type_page = IssueTypePage(page)
     request.cls.issue_type_page = issue_type_page
     issue_type_page.login_again()
@@ -34,7 +33,7 @@ class TestMigrateIssueType:
             expect(epic_issue_type).to_be_visible()
         with step('检查是否存在类型：子任务'):
             sub_issue_type = issue_type_page.page.get_by_text("子任务", exact=True)
-            expect(sub_issue_type).to_be_visible
+            expect(sub_issue_type).to_be_visible()
         with step('检查是否存在类型：Bug'):
             bug_issue_type = issue_type_page.page.get_by_text("Bug")
             expect(bug_issue_type).to_be_visible()
@@ -44,12 +43,3 @@ class TestMigrateIssueType:
         with step('检查是否存在类型：Task'):
             task_issue_type = issue_type_page.page.get_by_text("Task")
             expect(task_issue_type).to_be_visible()
-
-
-
-
-
-
-
-
-
