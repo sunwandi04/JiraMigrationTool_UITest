@@ -1,15 +1,7 @@
-#migration_tool_url: http://127.0.0.1:500
-#ones_env_url:   http://119.23.69.223
-#ones_env_user: marsdev@ones.ai
-#ones_env_common_user: jira@ones.ai
-#ones_env_common_user2: jira2@ones.ai
-#ones_env_pwd: Test1234
-#ones_base_url: /project/api/project
-
-migration_tool_url: http://39.108.125.159:8001/
-ones_env_url:   https://P1000-20230713.dev.myones.net
+migration_tool_url: http://39.108.125.159:8003/
+ones_env_url:   https://p1000-xiezhi.dev.myones.net/
 ones_env_user: marsdev@ones.ai
-#ones_env_common_user: jira@ones.ai
-#ones_env_common_user2: jira2@ones.ai
+ones_env_common_user: jira@ones.ai
+ones_env_common_user2: jira2@ones.ai
 ones_env_pwd: Test1234
 ones_base_url: /project/api/project
