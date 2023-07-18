@@ -14,6 +14,10 @@ class BasePage:
     def click_by_text(self, text: str):
         self.page.get_by_text(text).click()
 
+    @allure.step('select option - {text} - {title}')
+    def select_option(self, title: str, text: str):
+        self.page.get_by_title(title).get_by_text(text).click()
+
     @allure.step('Click button - {button}')
     def click_by_button(self, button: str):
         self.page.get_by_role("button", name=button).click()
