@@ -4,7 +4,7 @@ import re
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
-from JiraMigrationTool_UITest.page_objects.Migrationtool.evaluate_page import EvaluatePage
+from page_objects.Migrationtool.evaluate_page import EvaluatePage
 
 @pytest.fixture(scope='class')
 def access_page(request, page):

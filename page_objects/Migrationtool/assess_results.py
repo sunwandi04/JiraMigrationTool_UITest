@@ -1,4 +1,4 @@
-from JiraMigrationTool_UITest.page_objects.Migrationtool.evaluate_page import EvaluatePage
+from page_objects.Migrationtool.evaluate_page import EvaluatePage
 
 class ResultsPage(EvaluatePage):
 
