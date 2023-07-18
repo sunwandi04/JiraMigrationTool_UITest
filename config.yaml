@@ -1,7 +1,0 @@
-migration_tool_url: http://39.108.125.159:8002
-ones_env_url: https://P1000-20230714.dev.myones.net
-ones_env_user: marsdev@ones.ai
-ones_env_common_user: jira@ones.ai
-ones_env_common_user2: jira2@ones.ai
-ones_env_pwd: Test1234
-ones_base_url: /project/api/project
