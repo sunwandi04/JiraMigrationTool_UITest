@@ -2,3 +2,5 @@
 /allure-results/
 /.pytest_cache/
 config.yaml
+.idea
+.pytest_cache
