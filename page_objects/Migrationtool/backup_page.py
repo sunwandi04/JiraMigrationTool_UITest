@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+import time
+
 from page_objects.Migrationtool.login_page import LoginPage
 
 
@@ -25,3 +28,27 @@ class BackupPage(LoginPage):
     def analyze_wrong_format(self):
         self.click_by_title("错误格式测试包.zip")
         self.click_by_button("开始解析")
+
+    def clear_chosen_backup(self):
+        if self.page.locator("span.ones-select-selection-placeholder").is_hidden():
+            self.click_by_button("取消迁移")
+            time.sleep(1)
+            self.click_by_dialog_button("取消迁移")
+            time.sleep(0.5)
+            self.login_auto()
+        else:
+            print("未选择备份包")
+
+    def analyze_time(self):
+        analyze_time = self.page.locator("div.oac-flex.oac-items-center").first.inner_text()
+        return analyze_time
+
+    def analyze_backup_result(self):
+        analyze_result = self.page.locator("div.ones-table-content").first.inner_text()
+        analyze_result = analyze_result.replace("\t", " ")
+        return analyze_result
+
+    def analyze_team_result(self):
+        analyze_result = self.page.locator("div.ones-table-content").nth(1).inner_text()
+        analyze_result = analyze_result.replace("\t", " ")
+        return analyze_result

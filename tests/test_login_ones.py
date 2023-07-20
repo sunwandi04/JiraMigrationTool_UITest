@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 import re
 import time
+
 import allure
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
+
 from page_objects.Migrationtool.login_page import LoginPage
+from page_objects.ONES import ones_data_prepare
 
 
 @pytest.fixture(scope='class')
 def login_page(request, page):
     login_page = LoginPage(page)
     request.cls.login_page = login_page
+    ones_data_prepare.prepare_data()
     login_page.start_migration()
     login_page.agree_terms()
     yield login_page
