@@ -1,4 +1,5 @@
-import re
+import time
+
 from page_objects.base_page import BasePage
 
 
@@ -6,6 +7,7 @@ class FrontPage(BasePage):
 
     def guide_ones(self):
         with self.page.expect_popup() as guide_info:
+            time.sleep(1)
             self.click_by_button("查看使用指南")
         guide = guide_info.value
         return guide
@@ -20,6 +22,7 @@ class FrontPage(BasePage):
     def help_doc(self):
         self.page.locator("span").nth(1).click()
         with self.page.expect_popup() as page_info:
+            time.sleep(1)
             self.click_by_text("帮助手册")
         helpdoc = page_info.value
         return helpdoc

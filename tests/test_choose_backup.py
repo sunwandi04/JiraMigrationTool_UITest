@@ -1,22 +1,26 @@
 # -*- coding: utf-8 -*-
 import re
+import time
+
 import allure
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
+
 from page_objects.Migrationtool.backup_page import BackupPage
 
 
 @pytest.fixture(scope='class')
-def backup_page(request, page, env):
+def backup_page(request, page):
     backup_page = BackupPage(page)
     request.cls.backup_page = backup_page
     backup_page.login_again()
+    backup_page.clear_chosen_backup()
     yield backup_page
 
 
 @pytest.mark.usefixtures('backup_page', 'env')
-@allure.story('Jira迁移工具-登录 ONES')
+@allure.story('Jira迁移工具-选择 Jira 备份包')
 class TestChooseBackup:
     @allure.title('检查帮助文档跳转-备份 Jira Server 数据')
     @pytest.mark.run(order=1)
@@ -24,6 +28,7 @@ class TestChooseBackup:
         backup_page = self.backup_page
         with step('点击 了解如何备份 Jira Server 数据'):
             guide = backup_page.guide_backing_up_data()
+            time.sleep(2)
         with step('检查帮助链接是否正确'):
             expect(guide).to_have_url('https://confluence.atlassian.com/adminjiraserver/backing-up-data-938847673.html')
         with step('关闭使用指南页面'):
@@ -70,7 +75,7 @@ class TestChooseBackup:
         backup_page = self.backup_page
         with step('选择备份包，点击开始解析'):
             backup_page.click_by_text("错误格式测试包.zip")
-            backup_page.start_analyze()
+            backup_page.start_analyze("jira_ui_auto_test.zip","jira_ui_auto_test.zip")
         with step('检查否跳转到「解析Jira 备份包」页面'):
             expect(backup_page.page).to_have_url(re.compile(r".*/analyze/progress"))
 
