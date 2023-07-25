@@ -129,7 +129,8 @@ def prepare_ones_data():
 def read_config():
     # 获取环境变量
     curPath = os.path.abspath(os.path.dirname(__file__))
-    rootPath = curPath[:curPath.find("JiraMigrationTool_UITest") + len("JiraMigrationTool_UITest")]
+    #rootPath = curPath[:curPath.find("JiraMigrationTool_UITest") + len("JiraMigrationTool_UITest")]
+    rootPath = curPath[:curPath.find("jira_ui_test") + len("jira_ui_test")]
     config_path = os.path.abspath(rootPath + '/config.yaml')
 
     with open(config_path) as f:
