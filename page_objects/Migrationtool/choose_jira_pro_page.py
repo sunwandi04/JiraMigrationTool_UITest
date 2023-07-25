@@ -1,7 +1,5 @@
 # import re
 # from page_objects.base_page import BasePage
-import pytest
-from allure_commons._allure import step
 
 #
 # class FrontPage(BasePage):
@@ -53,7 +51,7 @@ from allure_commons._allure import step
 #         self.click_by_text('简体中文')
 
 import time
-from page_objects.base_page import BasePage
+
 from page_objects.Migrationtool.backup_page import BackupPage
 
 
@@ -75,19 +73,23 @@ class ChooseJiraPro(BackupPage):
         # print("popup的值为：-------------", popup)
         self.click_by_button("不支持自助迁移的项目")
 
-    #5.选择jira项目tab页，点击清除搜索按钮
+    # 5.选择jira项目tab页，点击清除搜索按钮
     def clear_search_proj(self):
         # self.page.locator("div").filter(has_text=re.compile(r"^不支持自助迁移的项目$")).get_by_role("button").nth(1).click()
-        self.search_jira_pro("搜索 Jira 属性名称"," ")
+        self.search_jira_pro("搜索 Jira 属性名称", " ")
 
     def click_all_checkbox(self):
-        self.page.locator("//div[contains(@class,'ones-table-sticky-holder')]/descendant::input[@type='checkbox']").click()
+        self.page.locator(
+            "//div[contains(@class,'ones-table-sticky-holder')]/descendant::input[@type='checkbox']").click()
 
     def click_some_checkbox(self):
         self.page.get_by_role("row", name="100+工作项类型 HUNDRED jira 无分类 386").get_by_label("").check()
 
     def filter_by_person(self, num):
-        self.page.locator(f"div:nth-child({num}) > .ones-checkbox-wrapper > .ones-checkbox > .ones-checkbox-input").check()
+        self.page.locator(
+            f"div:nth-child({num}) > .ones-checkbox-wrapper > .ones-checkbox > .ones-checkbox-input").check()
 
     def filter_by_type(self, num):
-        self.page.get_by_role("tooltip", name="添加筛选条件 项目分类 包含 全选 无分类 类别1 类别3 类别2 清空所选内容 确定").get_by_label("").nth(num).check()
+        self.page.get_by_role("tooltip",
+                              name="添加筛选条件 项目分类 包含 全选 无分类 类别1 类别3 类别2 清空所选内容 确定").get_by_label(
+            "").nth(num).check()

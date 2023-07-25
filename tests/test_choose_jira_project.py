@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-import re
 import time
-from operator import contains
 
 import allure
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
+
 # from page_objects.Migrationtool.backup_page import LoginPage
 from page_objects.Migrationtool.choose_jira_pro_page import ChooseJiraPro
-from tests.test_start_migration import start_page
 
 
 @pytest.fixture(scope='class')
@@ -54,8 +52,10 @@ class TestChooseJiraProject:
         with step("检查页面布局"):
             chooseproj_page = self.chooseproj_page
             chooseproj_page.contains("选择 Jira 项目")
-            chooseproj_page.contains("1. Jira 迁移工具仅支持迁移 Jira software 项目，即项目类型为“software”“business”的 Jira 项目。")
-            chooseproj_page.contains("2. 不支持自助迁移的项目及其业务数据将不予迁移，如果你需要迁移此类数据，请咨询 ONES 迁移团队。")
+            chooseproj_page.contains(
+                "1. Jira 迁移工具仅支持迁移 Jira software 项目，即项目类型为“software”“business”的 Jira 项目。")
+            chooseproj_page.contains(
+                "2. 不支持自助迁移的项目及其业务数据将不予迁移，如果你需要迁移此类数据，请咨询 ONES 迁移团队。")
 
         # 检查"联系我们"弹框
         with step("选择jira项目页面，点击'联系我们'"):
@@ -64,7 +64,8 @@ class TestChooseJiraProject:
             chooseproj_page.contains("感谢你的信任与支持")
 
         with step('检查是否弹出联系我们弹窗'):
-            dialog_title = chooseproj_page.page.get_by_role("dialog", name="联系我们").get_by_text("联系我们", exact=True)
+            dialog_title = chooseproj_page.page.get_by_role("dialog", name="联系我们").get_by_text("联系我们",
+                                                                                                   exact=True)
             expect(dialog_title).to_be_visible()
         with step("关闭弹窗"):
             chooseproj_page.click_by_button("我知道了")
@@ -89,7 +90,8 @@ class TestChooseJiraProject:
             chooseproj_page.contains("项目分类")
 
         with step("搜索框输入：servicedesk"):
-            chooseproj_page.page.get_by_role("dialog", name="不支持自助迁移的项目").get_by_placeholder("搜索项目名称、Key、负责人").fill("servicedesk")
+            chooseproj_page.page.get_by_role("dialog", name="不支持自助迁移的项目").get_by_placeholder(
+                "搜索项目名称、Key、负责人").fill("servicedesk")
             chooseproj_page.contains('IT服务台-servicedesk')
             chooseproj_page.contains('IT')
             chooseproj_page.contains('肥仔果')
@@ -177,11 +179,9 @@ class TestChooseJiraProject:
             chooseproj_page.click_by_button("确定")
             chooseproj_page.contains("导入测试项目100")
 
-
         with step("包含、类别3"):
             chooseproj_page.page.get_by_role("cell", name="项目分类").locator("path").click()
             chooseproj_page.click_by_button("清空所选内容")
             chooseproj_page.filter_by_type(3)
             chooseproj_page.click_by_button("确定")
             chooseproj_page.contains("导入测试项目209")
-
