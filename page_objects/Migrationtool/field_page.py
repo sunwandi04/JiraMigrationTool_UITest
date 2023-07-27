@@ -55,11 +55,11 @@ class MigrationField(ChooseJiraPro):
     def set_resolution_to_create(self,page):
         """将已经设置为映射的resolution属性，重新设置为创建。目的：当地于给这个属性初始化"""
         self.search_jira_pro("搜索 Jira 属性名称", "Resolution")
-        _,is_v = self.visible('//span[@title="映射"]')
+        _, is_v = self.visible('//span[@title="映射"]')
         if is_v:
             page.locator('//span[@title="映射"]').click()
             page.locator('//div[text()="创建"]').click()
-            self.set_action_and_check_result(page,"映射","创建")
+            self.set_action_and_check_result(page, "映射", "创建")
         else:
             pass
         self.clear_search_field()

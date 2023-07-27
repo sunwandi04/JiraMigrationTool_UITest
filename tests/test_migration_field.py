@@ -68,7 +68,7 @@ class TestMigrationField:
             migration_field.page.get_by_role("cell", name="问题属性 (1)").get_by_role("img").click()
 
             migration_field.contains("系统属性")
-            migration_field.contains("创建")
+            migration_field.visible('//span[@title="创建"]')
 
             migration_field.clear_search_field()
 
@@ -184,21 +184,21 @@ class TestMigrationField:
             time.sleep(1)
             # self.set_action_and_check_result(page, migration_field, "映射")
             ##-----------需要调试——————————————————————————————————————————
-            self.set_action_and_check_result(page, "创建", "映射")
+            migration_field.set_action_and_check_result(page, "创建", "映射")
             migration_field.clear_search_field()
 
         with step("搜索属性：Labels，并设置为映射,查看ONES工作项属性可选值为空"):
             migration_field.search_jira_pro("搜索 Jira 属性名称", "Labels")
             time.sleep(1)
             # self.set_action_and_check_result(page, migration_field, "映射")
-            self.set_action_and_check_result(page, "创建", "映射")
+            migration_field.set_action_and_check_result(page, "创建", "映射")
             migration_field.clear_search_field()
 
         with step("搜索属性：Component/s，并设置为映射,查看ONES工作项属性可选值为空"):
             migration_field.search_jira_pro("搜索 Jira 属性名称", "Component/s")
             time.sleep(1)
             # self.set_action_and_check_result(page, migration_field, "映射")
-            self.set_action_and_check_result(page, "创建", "映射")
+            migration_field.set_action_and_check_result(page, "创建", "映射")
             migration_field.clear_search_field()
 
     @allure.title("T206592 迁移属性，默认迁移操作检查")
@@ -227,41 +227,54 @@ class TestMigrationField:
     @pytest.mark.run(order=10)
     def test_field_disable_click(self, page, migration_field):
         with step("点击展开单行文本 的迁移操作下拉框，选择「映射」"):
+            page.reload()
+            time.sleep(1)
             migration_field.search_jira_pro("搜索 Jira 属性名称", "单行")
             time.sleep(1)
-            _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]')
-            if is_v:
-                pass
-            else:
-                migration_field.set_action_and_check_result(page, "创建", "映射")
+            # 兼容搜索不到的场景
+            # _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]')
+            # if is_v:
+            #     pass
+            # else:
+            #     migration_field.set_action_and_check_result(migration_field, "创建", "映射")
+            migration_field.set_action_and_check_result(page, "创建", "映射")
             migration_field.clear_search_field()
 
     @allure.title("T206590 迁移属性，迁移操作选择：取消迁移")
     @pytest.mark.run(order=11)
     def test_set_cancel_operate(self, page, migration_field):
         with step("史诗名称  迁移操作设置为「取消迁移」"):
+            page.reload()
+            time.sleep(1)
             migration_field.search_jira_pro("搜索 Jira 属性名称", "史诗名称")
             time.sleep(1)
-            _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]')
-            if is_v:
-                pass
-            else:
-                self.set_action_and_check_result(page, migration_field, "取消迁移")
+            # 兼容搜索不到的场景
+            # _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]')
+            # if is_v:
+            #     pass
+            # else:
+            #     migration_field.set_action_and_check_result(migration_field, "创建", "取消迁移")
+            migration_field.set_action_and_check_result(page, "创建", "取消迁移")
             migration_field.clear_search_field()
 
     @allure.title("T206587 迁移属性，迁移操作选择：创建")
     @pytest.mark.run(order=12)
     def test_set_create_operate(self, page, migration_field):
         with step("史诗名称  迁移操作设置为「创建」"):
+            page.reload()
+            time.sleep(1)
             migration_field.search_jira_pro("搜索 Jira 属性名称", "史诗名称")
             time.sleep(1)
-            _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]', wait_time=3)
+            # 兼容没有搜到结果的场景
+            # _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]', wait_time=3)
+            # if is_v:
+            #     pass
+            # else:
+            #     migration_field.set_action_and_check_result(migration_field, "创建", "创建")
+            #     migration_field.visible('//span[text()="单行文本"]')
+            migration_field.set_action_and_check_result(page, "创建", "创建")
+            migration_field.visible('//span[text()="单行文本"]')
 
-            if is_v:
-                pass
-            else:
-                migration_field.set_action_and_check_result(page, "创建", "创建")
-                migration_field.visible('//span[text()="单行文本"]')
             migration_field.clear_search_field()
 
     @allure.title("T206586 迁移属性，迁移操作选择：映射")
@@ -269,7 +282,9 @@ class TestMigrationField:
     def test_set_map_operate(self, page, migration_field):
         with step("Resolution 迁移操作设置为「映射」，查看ONES工作项属性可选值"):
             # 先初始化一下
-            migration_field.set_resolution_to_create(page)
+            # migration_field.set_resolution_to_create(page)
+            page.reload()
+            time.sleep(1)
             migration_field.search_jira_pro("搜索 Jira 属性名称", "Resolution")
             time.sleep(1)
             migration_field.set_action_and_check_result(page, "创建", "映射")
@@ -278,7 +293,6 @@ class TestMigrationField:
             migration_field.contains("需求类型")
             migration_field.contains("操作系统")
             migration_field.contains("浏览器")
-            migration_field.clear_search_field()
 
         with step("ONES工作项属性选择「问题单分析」"):
             page.locator('//div[text()="问题单分析"]').click()
@@ -321,6 +335,7 @@ class TestMigrationField:
 
             page.locator("div .rc-virtual-list-holder:visible:has-text('需求不明确'):visible").click()
             migration_field.click_by_button('确定')
+            migration_field.clear_search_field()
 
             # 完成映射为「不修复」
             # page.locator('//div[text()="编辑选项"]').click()

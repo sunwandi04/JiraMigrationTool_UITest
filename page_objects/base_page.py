@@ -1,5 +1,5 @@
 import allure
-from playwright.sync_api import Page
+from playwright.sync_api import Page, Error
 
 
 class BasePage:
@@ -72,3 +72,70 @@ class BasePage:
     def expand_fold(self, text: str):
         self.page.get_by_role("cell", name=text).get_by_role("img").click()
 
+    @allure.step('Click textbox - {textbox}')
+    def click_by_textbox(self, textbox: str, text: str):
+        self.page.get_by_role("textbox", name=textbox).fill(text)
+
+    def visible(self, locator, wait_time=15, idx=1):
+
+        el = self.page.locator(locator)
+
+        try:
+            el.wait_for(timeout=wait_time * 1000)
+            # not found
+        except TimeoutError as e:
+                print(f'\nNot found: {e}')
+                return None, False
+
+        # multiple el found
+        except Error as ee:
+                # assert el.count() > 1, 'Expect multi elements'
+                if el.count() > 1:
+                    print(f"\n{'=' * 18} Multiple elements found{'=' * 18}\n{ee}")
+                    curr = el.nth(idx - 1)
+                    v = curr.is_visible()
+                    return curr, v
+                else:
+                    return None, False
+
+        if el.is_visible():
+            return el, True
+        else:
+            return el, False
+
+    def contains(self, text: str, el_type='text'):
+        _postfix = {
+            'text': '',
+            'input': 'input',
+            'textarea': 'textarea',
+            'dropdown': 'dropdown',
+            'div': 'div',
+            'table_cell': 'table_cell',
+        }
+        _pf = _postfix.get(el_type, '')
+        my_path = f'//*[contains(text(), "{text}")]'
+        if _pf:
+            my_path = my_path + f'/following-sibling::*//{_pf}'
+
+        v = self.visible(my_path)
+        if not v[1]:
+            # self._attach(my_path)
+            print(f'ElementNotFound: {text}')
+            raise AssertionError('ElementNotFound')
+
+        return v
+
+    def element_is_exist(self, locator, is_exist=True, wait_time=30):
+        """
+        断言页面是否存在元素
+        :param wait_time:
+        :param locator: 定位
+        :param is_exist: 断言 True or False
+        :return:
+        """
+        element, is_v = self.visible(locator, wait_time=wait_time)
+        assert is_v == is_exist, AssertionError('AssertionError')
+
+    def attach(self):
+        ...
+        # self.page.screenshot(path=)
