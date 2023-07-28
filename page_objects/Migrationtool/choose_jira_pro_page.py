@@ -74,9 +74,9 @@ class ChooseJiraPro(BackupPage):
         self.click_by_button("不支持自助迁移的项目")
 
     # 5.选择jira项目tab页，点击清除搜索按钮
-    def clear_search_proj(self):
+    def clear_search_proj(cls ):
         # self.page.locator("div").filter(has_text=re.compile(r"^不支持自助迁移的项目$")).get_by_role("button").nth(1).click()
-        self.search_jira_pro("搜索 Jira 属性名称", " ")
+        cls.page.locator('//input[@placeholder="搜索项目名称、Key、负责人"]').clear()
 
     def click_all_checkbox(self):
         self.page.locator(

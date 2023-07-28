@@ -27,22 +27,19 @@ class MigrationField(ChooseJiraPro):
         # :return:
         # """
 
+        # 方式1：点击下拉框操作，并且传入operate值
         # page.locator(f'//span[@title="{name}"]').click()
         # time.sleep(0.5)
         # page.locator(f'//div[text()="{operate}"]').click()
 
-        # page.get_by_title(f"{operate}").get_by_text(f"{operate}").click()
-        # page.get_by_text(f"{operate}", exact=True).click()
-        # 点击下拉框操作，并且传入operate值
-
+        # 方式2
         page.get_by_role("cell", name=f"{name}").get_by_title(f"{name}").click()
         page.locator(f'div .rc-virtual-list-holder-inner:visible:has-text("{operate}"):visible')
 
-    def check_field_rule_value(self,page):
+    def check_field_rule_value(self, page):
         """Resolution 迁移操作设置为「映射」查看ONES工作项属性可选值"""
         self.search_jira_pro("搜索 Jira 属性名称", "Resolution")
-        time.sleep(0.5)
-        # self.set_action_and_check_result(page, "创建", "映射")
+        time.sleep(3)
         page.locator('//span[@title="创建"]').click()
         time.sleep(0.5)
         page.locator('//div[text()="映射"]').click()

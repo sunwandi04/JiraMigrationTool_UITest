@@ -36,7 +36,6 @@ def migration_field(request, page, env):
     time.sleep(2)
     yield migration_field
 
-
 @pytest.mark.usefixtures('migration_field', 'env')
 @allure.story('Jira迁移工具-7.迁移属性')
 class TestMigrationField:
@@ -48,13 +47,9 @@ class TestMigrationField:
             migration_field.contains("系统属性的映射规则已确定，不可更改。")
 
         with step("hover迁移操作说明"):
-            # pass
-            # migration_field.hover("")
             migration_field.page.get_by_role("cell", name="* 迁移操作").get_by_role("img").click()
-            # migration_field.page.locator("//*[text()='迁移操作']/following-sibling::*").click()
             migration_field.contains("创建为 ONES 新的自定义属性")
             migration_field.contains("ONES 系统属性的映射规则已确定，不可更改")
-            # migration_field.page.get_by_role("tooltip", name="1. 迁移操作说明： 1.1 创建：创建为 ONES 新的自定义工作项类型； 1.2 映射：映射为 ONES 已有的工作项类型，仅支持一对一映射； 1.3 取消迁移：对应的 Jira 问题及业务数据将不会迁移至 ONES。 2. 迁移至 ONES 后，ONES 映射关系将无法更改。").get_by_text("映射：映射为 ONES 已有的工作项类型，仅支持一对一映射；").click()
 
     @allure.title('T206580 迁移属性，搜索属性')
     @pytest.mark.run(order=2)
@@ -66,10 +61,8 @@ class TestMigrationField:
             time.sleep(1)
             migration_field.page.get_by_role("cell", name="问题属性 (1)").get_by_role("img").click()
             migration_field.page.get_by_role("cell", name="问题属性 (1)").get_by_role("img").click()
-
             migration_field.contains("系统属性")
             migration_field.visible('//span[@title="创建"]')
-
             migration_field.clear_search_field()
 
         with step("搜索输入：12345"):
@@ -126,8 +119,10 @@ class TestMigrationField:
     @pytest.mark.run(order=6)
     def test_check_field_rule_value(self, page, migration_field):
         with step("Resolution 迁移操作设置为「映射」查看ONES工作项属性可选值"):
-            # migration_field.check_field_rule_value(page)
-            pass
+            page.reload()
+            time.sleep(1)
+            migration_field.check_field_rule_value(page)
+            migration_field.clear_search_field()
 
     @allure.title('T207009 迁移属性，映射规则检查')
     @pytest.mark.run(order=7)
@@ -137,7 +132,7 @@ class TestMigrationField:
             migration_field.clear_search_field()
 
         with step("搜索属性：0000-文本框（单行），并设置为映射,查看ONES工作项属性可选值"):
-            migration_field.search_jira_pro("搜索 Jira 属性名称", "0000-文本框（单行")
+            migration_field.search_jira_pro("搜索 Jira 属性名称", "0000-文本框（单行）")
             time.sleep(1)
             if page.is_visible('//div[text()="暂无匹配结果"]'):
                 return
@@ -150,11 +145,6 @@ class TestMigrationField:
 
         with step("搜索属性：Project Description，并设置为映射,查看ONES工作项属性可选值"):
             migration_field.search_jira_pro("搜索 Jira 属性名称", "Project Description")
-            # page.locator('//input[@placeholder="搜索 Jira 属性名称"]').click()
-            # page.locator(".ones-input-clear-icon").click()
-            # time.sleep(1)
-            # page.get_by_placeholder("搜索 Jira 属性名称").click()
-            # page.get_by_placeholder("搜索 Jira 属性名称").fill("Project Description")
             time.sleep(1)
             page.get_by_role("cell", name="创建").get_by_text("创建").click()
             page.get_by_text("映射", exact=True).click()
@@ -164,11 +154,6 @@ class TestMigrationField:
 
         with step("搜索属性：Project URL，并设置为映射,查看ONES工作项属性可选值"):
             migration_field.search_jira_pro("搜索 Jira 属性名称", "Project URL")
-            # page.locator('//input[@placeholder="搜索 Jira 属性名称"]').click()
-            # page.locator(".ones-input-clear-icon").click()
-            # time.sleep(1)
-            # page.get_by_placeholder("搜索 Jira 属性名称").click()
-            # page.get_by_placeholder("搜索 Jira 属性名称").fill("Project URL")
             time.sleep(1)
             page.get_by_role("cell", name="创建").get_by_text("创建").click()
             page.get_by_text("映射", exact=True).click()
@@ -182,22 +167,18 @@ class TestMigrationField:
         with step("搜索属性：Affects Version/s，并设置为映射,查看ONES工作项属性可选值为空"):
             migration_field.search_jira_pro("搜索 Jira 属性名称", "Affects Version/s")
             time.sleep(1)
-            # self.set_action_and_check_result(page, migration_field, "映射")
-            ##-----------需要调试——————————————————————————————————————————
             migration_field.set_action_and_check_result(page, "创建", "映射")
             migration_field.clear_search_field()
 
         with step("搜索属性：Labels，并设置为映射,查看ONES工作项属性可选值为空"):
             migration_field.search_jira_pro("搜索 Jira 属性名称", "Labels")
             time.sleep(1)
-            # self.set_action_and_check_result(page, migration_field, "映射")
             migration_field.set_action_and_check_result(page, "创建", "映射")
             migration_field.clear_search_field()
 
         with step("搜索属性：Component/s，并设置为映射,查看ONES工作项属性可选值为空"):
             migration_field.search_jira_pro("搜索 Jira 属性名称", "Component/s")
             time.sleep(1)
-            # self.set_action_and_check_result(page, migration_field, "映射")
             migration_field.set_action_and_check_result(page, "创建", "映射")
             migration_field.clear_search_field()
 
@@ -231,12 +212,6 @@ class TestMigrationField:
             time.sleep(1)
             migration_field.search_jira_pro("搜索 Jira 属性名称", "单行")
             time.sleep(1)
-            # 兼容搜索不到的场景
-            # _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]')
-            # if is_v:
-            #     pass
-            # else:
-            #     migration_field.set_action_and_check_result(migration_field, "创建", "映射")
             migration_field.set_action_and_check_result(page, "创建", "映射")
             migration_field.clear_search_field()
 
@@ -248,12 +223,6 @@ class TestMigrationField:
             time.sleep(1)
             migration_field.search_jira_pro("搜索 Jira 属性名称", "史诗名称")
             time.sleep(1)
-            # 兼容搜索不到的场景
-            # _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]')
-            # if is_v:
-            #     pass
-            # else:
-            #     migration_field.set_action_and_check_result(migration_field, "创建", "取消迁移")
             migration_field.set_action_and_check_result(page, "创建", "取消迁移")
             migration_field.clear_search_field()
 
@@ -265,13 +234,6 @@ class TestMigrationField:
             time.sleep(1)
             migration_field.search_jira_pro("搜索 Jira 属性名称", "史诗名称")
             time.sleep(1)
-            # 兼容没有搜到结果的场景
-            # _, is_v = migration_field.visible('//div[text()="暂无匹配结果"]', wait_time=3)
-            # if is_v:
-            #     pass
-            # else:
-            #     migration_field.set_action_and_check_result(migration_field, "创建", "创建")
-            #     migration_field.visible('//span[text()="单行文本"]')
             migration_field.set_action_and_check_result(page, "创建", "创建")
             migration_field.visible('//span[text()="单行文本"]')
 
