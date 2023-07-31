@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="047d73c2-4957-4994-87d9-edda034e1df4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jira_ui_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jira_ui_test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page_objects/Migrationtool/other_map_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_other_map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page_objects/Migrationtool/choose_jira_pro_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page_objects/Migrationtool/choose_jira_pro_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page_objects/Migrationtool/field_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page_objects/Migrationtool/field_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_choose_jira_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_choose_jira_project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_migration_field.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_migration_field.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,16 +40,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/zql/Desktop/jira_ui/jira_ui_test/tests",
-    "settings.editor.selected.configurable": "vcs.Git"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zql/Desktop/jira_ui/jira_ui_test/tests&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests" />
@@ -61,72 +58,8 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_choose_jira_project.TestChooseJiraProject">
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="jira_ui_test" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="jira_ui_test" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <module name="jira_ui_test" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <module name="jira_ui_test" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_choose_jira_project.TestChooseJiraProject" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_other_map.TestOtherData.test_contains_jira_proj">
+    <configuration name="Python tests for test_choose_jira_project.TestChooseJiraProject.test_layout_data" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="jira_ui_test" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -136,11 +69,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_choose_jira_project.TestChooseJiraProject&quot;" />
+      <option name="_new_target" value="&quot;test_choose_jira_project.TestChooseJiraProject.test_layout_data&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_choose_jira_project.TestChooseJiraProject.test_search_jira_pro" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_other_map.TestOtherData" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="jira_ui_test" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -150,11 +83,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_choose_jira_project.TestChooseJiraProject.test_search_jira_pro&quot;" />
+      <option name="_new_target" value="&quot;test_other_map.TestOtherData&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_migration_field.TestMigrationField.test_check_field_list" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_other_map.TestOtherData.test_contains_jira_proj" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="jira_ui_test" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -164,11 +97,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_migration_field.TestMigrationField.test_check_field_list&quot;" />
+      <option name="_new_target" value="&quot;test_other_map.TestOtherData.test_contains_jira_proj&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_migration_field.TestMigrationField.test_check_field_rule_value" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for tests.test_other_map.TestOtherData.test_check_layout" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="jira_ui_test" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -178,11 +111,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_migration_field.TestMigrationField.test_check_field_rule_value&quot;" />
+      <option name="_new_target" value="&quot;tests.test_other_map.TestOtherData.test_check_layout&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_migration_field.TestMigrationField.test_field_disable_click" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for tests.test_other_map.TestOtherData.test_search" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="jira_ui_test" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -192,17 +125,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_migration_field.TestMigrationField.test_field_disable_click&quot;" />
+      <option name="_new_target" value="&quot;tests.test_other_map.TestOtherData.test_search&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_choose_jira_project.TestChooseJiraProject" />
-        <item itemvalue="Python tests.Python tests for test_choose_jira_project.TestChooseJiraProject.test_search_jira_pro" />
-        <item itemvalue="Python tests.Python tests for test_migration_field.TestMigrationField.test_field_disable_click" />
-        <item itemvalue="Python tests.Python tests for test_migration_field.TestMigrationField.test_check_field_rule_value" />
-        <item itemvalue="Python tests.Python tests for test_migration_field.TestMigrationField.test_check_field_list" />
+        <item itemvalue="Python tests.Python tests for test_other_map.TestOtherData.test_contains_jira_proj" />
+        <item itemvalue="Python tests.Python tests for test_other_map.TestOtherData" />
+        <item itemvalue="Python tests.Python tests for tests.test_other_map.TestOtherData.test_search" />
+        <item itemvalue="Python tests.Python tests for tests.test_other_map.TestOtherData.test_check_layout" />
+        <item itemvalue="Python tests.Python tests for test_choose_jira_project.TestChooseJiraProject.test_layout_data" />
       </list>
     </recent_temporary>
   </component>
@@ -222,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690516320333</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改用例">
+      <created>1690529422501</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1690529422504</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,6 +184,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git-ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="git-ignore" />
+    <MESSAGE value="修改用例" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改用例" />
   </component>
 </project>
