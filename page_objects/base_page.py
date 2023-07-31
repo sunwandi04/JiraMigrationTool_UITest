@@ -61,11 +61,13 @@ class BasePage:
     @allure.step('Input text - {text} into label - {label}')
     def input(self, label: str, text: str):
         self.page.get_by_label(label).click()
+        self.page.get_by_label(label).fill(" ")
         self.page.get_by_label(label).fill(text)
 
     @allure.step('Type text - {text} into placeholder - {placeholder}')
     def type(self, placeholder: str, text: str):
         self.page.get_by_placeholder(placeholder).click()
+        self.page.get_by_placeholder(placeholder).fill(" ")
         self.page.get_by_placeholder(placeholder).fill(text)
 
     @allure.step('expand or fold text - {text} ')
