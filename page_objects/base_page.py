@@ -1,5 +1,12 @@
-import allure
+import allure, os
 from playwright.sync_api import Page, Error
+from falcons.com.env import RuntimeVars
+from falcons.helper import mocks
+from falcons.com.nick import (
+    step,
+    attachment_type,
+    attach,
+)
 
 
 class BasePage:
@@ -86,19 +93,19 @@ class BasePage:
             el.wait_for(timeout=wait_time * 1000)
             # not found
         except TimeoutError as e:
-                print(f'\nNot found: {e}')
-                return None, False
+            print(f'\nNot found: {e}')
+            return None, False
 
         # multiple el found
         except Error as ee:
-                # assert el.count() > 1, 'Expect multi elements'
-                if el.count() > 1:
-                    print(f"\n{'=' * 18} Multiple elements found{'=' * 18}\n{ee}")
-                    curr = el.nth(idx - 1)
-                    v = curr.is_visible()
-                    return curr, v
-                else:
-                    return None, False
+            # assert el.count() > 1, 'Expect multi elements'
+            if el.count() > 1:
+                print(f"\n{'=' * 18} Multiple elements found{'=' * 18}\n{ee}")
+                curr = el.nth(idx - 1)
+                v = curr.is_visible()
+                return curr, v
+            else:
+                return None, False
 
         if el.is_visible():
             return el, True
@@ -138,6 +145,13 @@ class BasePage:
         element, is_v = self.visible(locator, wait_time=wait_time)
         assert is_v == is_exist, AssertionError('AssertionError')
 
-    def attach(self):
-        ...
-        # self.page.screenshot(path=)
+    def attach(self, png):
+        """
+        截图功能
+        :param png: 截图文件名称
+        :return:
+        """
+        base_path = RuntimeVars.tmp_files
+        p = f'{png}-{mocks.ones_uuid()}'
+        s_path = os.path.join(base_path, f'{p}.png')
+        allure.attach(self.page.screenshot(path=s_path, full_page=True), p, attachment_type.PNG)

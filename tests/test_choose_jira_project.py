@@ -29,19 +29,23 @@ class TestChooseJiraProject:
     @allure.title('T206170 选择jira项目-选择 Jira 项目，搜索项目')
     @pytest.mark.run(order=1)
     def test_search_jira_pro(self, chooseproj_page):
-        with step('搜索项目名称包含：示例项目'):
+        now_time = time.strftime("%Y-%m-%d %H:%M:%S")
+        with allure.step('搜索项目名称包含：示例项目'):
             chooseproj_page.search_jira_pro("搜索项目名称、Key、负责人", "示例项目")
             chooseproj_page.contains('示例项目')
+            chooseproj_page.attach(png=f"搜索结果截图照片,{now_time}")
             chooseproj_page.clear_search_proj()
 
-        with step('搜索项目名称包含：TEST'):
+        with allure.step('搜索项目名称包含：TEST'):
             chooseproj_page.search_jira_pro("搜索项目名称、Key、负责人", "TEST")
             chooseproj_page.contains('test')
+            chooseproj_page.attach(png=f"搜索结果截图照片,{now_time}")
             chooseproj_page.clear_search_proj()
 
-        with step('搜索项目名称包含：TEST123456789'):
+        with allure.step('搜索项目名称包含：TEST123456789'):
             chooseproj_page.search_jira_pro("搜索项目名称、Key、负责人", "TEST123456789")
             chooseproj_page.element_is_exist('//div[text()="暂无匹配结果"]')
+            chooseproj_page.attach(png=f"搜索结果截图照片,{now_time}")
             chooseproj_page.clear_search_proj()
 
     @allure.title('T206159 选择 Jira 项目，页面布局检查')
