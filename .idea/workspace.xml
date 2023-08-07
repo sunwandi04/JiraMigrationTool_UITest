@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="047d73c2-4957-4994-87d9-edda034e1df4" name="Changes" comment="">
+    <list default="true" id="047d73c2-4957-4994-87d9-edda034e1df4" name="Changes" comment="add logging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page_objects/ONES/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/page_objects/ONES/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page_objects/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/page_objects/base_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_choose_jira_project.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_choose_jira_project.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +43,8 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/zql/Desktop/jira_ui/new_ui/JiraMigrationTool_UITest/page_objects/ONES",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+    "last_opened_file_path": "/Users/zql/Desktop/jira_ui/new_ui/JiraMigrationTool_UITest",
+    "settings.editor.selected.configurable": "org.intellij.featuresSuggester.FeatureSuggesterConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -184,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691130716811</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add logging">
+      <created>1691378847762</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691378847763</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,6 +213,7 @@
     <MESSAGE value="修改用例" />
     <MESSAGE value="basepage优化" />
     <MESSAGE value="封装截图功能attach" />
-    <option name="LAST_COMMIT_MESSAGE" value="封装截图功能attach" />
+    <MESSAGE value="add logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="add logging" />
   </component>
 </project>
