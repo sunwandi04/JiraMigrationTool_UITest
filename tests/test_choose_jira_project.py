@@ -6,7 +6,8 @@ import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
 
-# from page_objects.Migrationtool.backup_page import LoginPage
+# from page_objects.ONES import LoggerHandler
+from page_objects.ONES import logging
 from page_objects.Migrationtool.choose_jira_pro_page import ChooseJiraPro
 
 
@@ -26,6 +27,7 @@ def chooseproj_page(request, page, env):
 @pytest.mark.usefixtures('chooseproj_page', 'env')
 @allure.story('Jira迁移工具-5.选择jira项目')
 class TestChooseJiraProject:
+    # log_test = LoggerHandler()
     @allure.title('T206170 选择jira项目-选择 Jira 项目，搜索项目')
     @pytest.mark.run(order=1)
     def test_search_jira_pro(self, chooseproj_page):
@@ -34,6 +36,7 @@ class TestChooseJiraProject:
             chooseproj_page.search_jira_pro("搜索项目名称、Key、负责人", "示例项目")
             chooseproj_page.contains('示例项目')
             chooseproj_page.attach(png=f"搜索结果截图照片,{now_time}")
+            logging.info("测试打印日志")
             chooseproj_page.clear_search_proj()
 
         with allure.step('搜索项目名称包含：TEST'):
