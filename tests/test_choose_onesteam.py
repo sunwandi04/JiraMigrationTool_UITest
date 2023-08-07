@@ -4,7 +4,7 @@ import time
 import pytest
 from allure_commons._allure import step
 from playwright.sync_api import expect
-from page_objects.Migrationtool.choose_ones_team import SelectTeamPage
+from page_objects.Migrationtool.choose_onesteams_page import SelectTeamPage
 
 
 @pytest.fixture(scope='class')
