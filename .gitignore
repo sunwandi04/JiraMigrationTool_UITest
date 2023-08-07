@@ -1,0 +1,10 @@
+.idea
+.pytest_cache
+config.yaml
+docker-compose.yml
+requirements.txt
+.gitignore
+docker-compose.yml
+allure-report
+allure-results
+README.md
